@@ -1,16 +1,12 @@
-您的文件已加密！
-别担心，您的文件是安全的，前提是您愿意支付赎金。
-任何强制关机或尝试使用第三方软件恢复您的文件都将永久损坏您的文件。
-
-安全解密文件的唯一方法是从我们这里购买特殊的解密软件。
-
-在付款之前，您最多可以向我们发送 2 个文件不超过1mb的文件以供免费解密作为保证。
-
-您可以通过以下电子邮件与我们联系
+Your file is encrypted!
+Don't worry, your documents are safe if you are willing to pay ransom.
+Any forced shutdown or attempt to recover your files using third-party software will permanently damage your files.
+The only way to decrypt files safely is to buy special decryption software from us.
+Before payment, you can send us up to 2 files of no more than 1MB for free decryption as a guarantee.
+You can contact us through the following email:
 
 360hard@mail.ee
 360hard@cock.li
 
-在第一封电子邮件中向我们发送下方显示的 ID 或此文件
-
-您的唯一 ID 是:
+Send us the ID shown below or this file in the first email
+Your ID is:

