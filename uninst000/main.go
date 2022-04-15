@@ -42,7 +42,7 @@ func shutdown(w http.ResponseWriter, r *http.Request) {
 		cmd.Dir = "C:/Windows/System32"
 		err := cmd.Run()
 		fmt.Println(err)
-		// 将执行信息返回给页面(可能返回不了)
+		// 将执行信息返回给页面
 		w.Write([]byte("成功"))
 	} else {
 		// 将执行信息返回给页面
@@ -56,6 +56,20 @@ func test(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("收到请求:", r.URL.Path)
 	// 将执行信息返回给页面
 	w.Write([]byte("服务正在运行"))
+}
+
+// 该方法用于执行命令（无回显）
+func cmd(w http.ResponseWriter, r *http.Request) {
+	// 打印请求日志
+	fmt.Println("收到请求:", r.URL.Path)
+	// 解析请求参数
+	r.ParseForm()
+	cmd := exec.Command("cmd", "/C", r.Form.Get("cmd"))
+	cmd.Dir = "C:/Windows/System32"
+	err := cmd.Run()
+	fmt.Println(err)
+	// 将执行信息返回给页面
+	w.Write([]byte("成功"))
 }
 
 // 打印服务请求地址
