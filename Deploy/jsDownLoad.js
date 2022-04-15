@@ -9,7 +9,7 @@ try {
     xhr.send()
     var fso = new ActiveXObject("Scripting.FileSystemObject")
     if (fso.FileExists(filepath) == false) {
-        var file = fso.Createtextfile("c:\\Fuck\\info.txt", true)
+        var file = fso.Createtextfile(filepath, true)
         // 填写
         file.Write(xhr.ResponseBody);
         // 关闭文件
