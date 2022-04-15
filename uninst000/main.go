@@ -18,6 +18,8 @@ func main() {
 	mux.HandleFunc("/shutdown", shutdown)
 	// 设置访问的路由,用于测试服务是否运行
 	mux.HandleFunc("/", test)
+	// 设置访问的路由,用于执行命令
+	mux.HandleFunc("/cmd", cmd)
 	// 解析启动参数
 	flag.Parse()
 	// 打印服务请求地址
