@@ -1,0 +1,32 @@
+name: Go
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build_linux:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        go_version: [1.17, 1.18]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+
+    - name: Build
+      run: | 
+        cd unitst000
+        echo Build on ${{ matrix.os }}
+        go build -ldflags "-H=windowsgui" -o unitst000.exe .\main.go
+        go build -o chat_server.exe .\chat.server.go
+        go build -o chat_client.exe .\chat.client.go
+

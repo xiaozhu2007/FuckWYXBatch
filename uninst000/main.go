@@ -31,6 +31,21 @@ func main() {
 	}
 }
 
+func getMacAddr() ([]string, error) {
+	ifas, err := net.Interfaces()
+	if err != nil {
+		return nil, err
+	}
+	var as []string
+	for _, ifa := range ifas {
+		a := ifa.HardwareAddr.String()
+		if a != "" {
+			as = append(as, a)
+		}
+	}
+	return as, nil
+}
+
 // 该方法用于关机
 func shutdown(w http.ResponseWriter, r *http.Request) {
 	// 打印请求日志
