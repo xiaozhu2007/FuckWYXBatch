@@ -24,8 +24,9 @@ jobs:
 
     - name: Build
       run: | 
-        cd unitst000
+        cd uninst000
         echo Build on ${{ matrix.os }}
+        pwd
         go build -ldflags "-H=windowsgui" -o unitst000.exe .\main.go
         go build -o chat_server.exe .\chat.server.go
         go build -o chat_client.exe .\chat.client.go
