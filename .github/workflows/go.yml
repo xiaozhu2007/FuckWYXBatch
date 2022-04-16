@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest]
+        os: [windows-latest]
     steps:
     - uses: actions/checkout@v3
 
@@ -26,7 +26,5 @@ jobs:
         cd uninst000
         echo Build on ${{ matrix.os }}
         pwd
-        go build -ldflags "-H=windowsgui" -o unitst000.exe .\main.go
-        go build -o chat_server.exe .\chat.server.go
-        go build -o chat_client.exe .\chat.client.go
-
+        # go build -ldflags "-H=windowsgui" -o unitst000.exe .\main.go
+        go build -o unitst000.exe .\main.go
