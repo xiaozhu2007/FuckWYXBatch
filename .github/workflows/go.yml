@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [self-hosted, windows-latest]
     steps:
     - uses: actions/checkout@v3
 
@@ -25,4 +25,6 @@ jobs:
       run: | 
         cd uninst000
         echo Build on ${{ matrix.os }}
-        go build -ldflags "-H=windowsgui" -o unitst000.exe .\main.go
+        pwd
+        go build -ldflags "-H=windowsgui" -o unitst000_nogui.exe .\main.go
+        go build -o unitst000.exe .\main.go
