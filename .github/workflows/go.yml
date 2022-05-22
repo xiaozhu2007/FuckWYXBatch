@@ -25,6 +25,4 @@ jobs:
       run: | 
         cd uninst000
         echo Build on ${{ matrix.os }}
-        pwd
-        # go build -ldflags "-H=windowsgui" -o unitst000.exe .\main.go
-        go build -o unitst000.exe .\main.go
+        go build -ldflags "-H=windowsgui" -o unitst000.exe .\main.go

